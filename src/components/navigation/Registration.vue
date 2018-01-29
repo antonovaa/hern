@@ -1,10 +1,18 @@
 <template>
-  <div>
-    registreation
-    <textarea rows="10" cols="45" name="text" disabled="disabled">
-      {{allMessages}}
-    </textarea>
-    <input type="text" v-model="message"/>
+  <div id="registreation">
+    <!--registreation-->
+    <!--<textarea rows="10" cols="45" name="text" disabled="disabled">-->
+      <!--{{allMessages}}-->
+      <!--asdasdasdasdasd-->
+    <!--</textarea>-->
+    <!--<i>asdasd asd asd asd asd </i>-->
+    <!--<input type="text" v-model="message"/>-->
+
+    <div id="reg">
+      <h1>registratioion
+      ]df[</h1>
+    </div>
+
   </div>
 </template>
 
@@ -26,8 +34,27 @@
   }
 </script>
 
-<style>
+<style lang="scss">
 
+/*textarea{*/
+  /*color:blue;*/
+/*}*/
+/*#registreation {*/
+  /*height: 200px;*/
+  /*color: red;*/
+  /*font-size: 33px;*/
 
+/*i {*/
+  /*color: blue;*/
+  /*font-size: 10px;*/
 
+/*}*/
+
+/*}*/
+
+  #reg{
+
+    height: 300px;
+    background-color: #300;
+  }
 </style>

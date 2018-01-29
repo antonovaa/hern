@@ -1,4 +1,4 @@
-# hernyanyanya
+# hern
 
 > A Vue.js project
 

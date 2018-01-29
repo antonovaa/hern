@@ -1,12 +1,20 @@
 <template>
   <div>
-    news
-    <textarea rows="10" cols="45" name="text" disabled="disabled">
-      {{allMessages}}
-    </textarea>
-    <input type="text" v-model="message"/>
-  </div>
 
+    <!--news-->
+    <!--<textarea rows="10" cols="45" name="text" disabled="disabled">-->
+      <!--{{allMessages}}-->
+      <!--das23231s1s 2s-->
+    <!--</textarea>-->
+    <!--<input type="text" v-model="message"/>-->
+    <!---->
+
+    <div id="new">
+      <h1>news</h1>
+    </div>
+
+
+  </div>
 </template>
 
 <script>
@@ -27,8 +35,12 @@
   }
 </script>
 
-<style>
+<style >
 
+#new{
 
+  height: 300px;
+  background-color: #bb0018;
+}
 
 </style>

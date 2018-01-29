@@ -1,7 +1,6 @@
 <template>
   <div id="chat">
     chat
-    <img src="./images/chat.jpg" />
     <textarea rows="10" cols="45" name="text" disabled="disabled">
       {{this.allMessages}}
     </textarea>
