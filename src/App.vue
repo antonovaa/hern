@@ -70,6 +70,12 @@
     left: $sidebar-width;
     z-index: -1;
   }
+  #chat{
+    position:fixed;
+    bottom:0;
+    left:$sidebar-width;
+    z-index: 9;
+  }
 
 
 </style>
