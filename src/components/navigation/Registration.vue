@@ -18,7 +18,9 @@
           <div class="row">
             <div class="col-12">
               <transition name="slide-fade">
-                <router-view></router-view>
+                <div v-if="show1" id="login-form" >
+                  <router-view></router-view>
+                </div>
               </transition>
               <transition name="slide-fade2">
                 <form v-if="show2" id="register-form" action="/testformpass" method="post" role="form">
@@ -41,7 +43,7 @@
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="register-submit" id="register-submit" tabindex="4"
+                        <input type="button" name="register-submit" id="register-submit" tabindex="4"
                                class="form-control btn btn-register" value="Register Now">
                       </div>
                     </div>
@@ -58,50 +60,14 @@
 
 <script>
 
+  import Login from './Login.vue'
   import VueRouter from 'vue-router'
-
-  const Login = { template: '<div><form v-if="show1" id="login-form" action="/testformlog" method="post" role="form" style="display: block;">\n' +
-  '                  <div class="form-group">\n' +
-  '                    <input type="text" name="username" v-model="username" id="usernamel" tabindex="1" class="form-control"\n' +
-  '                           placeholder="Username" value="">\n' +
-  '                  </div>\n' +
-  '                  <div class="form-group">\n' +
-  '                    <input type="password" name="password" v-model="password" id="passwordl" tabindex="2" class="form-control"\n' +
-  '                           placeholder="Password">\n' +
-  '                  </div>\n' +
-  '                  <div class="form-group text-center">\n' +
-  '                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">\n' +
-  '                    <label for="remember"> Remember Me</label>\n' +
-  '                  </div>\n' +
-  '                  <div class="form-group">\n' +
-  '                    <div class="row">\n' +
-  '                      <div class="col-sm-6 col-sm-offset-3">\n' +
-  '                        <input type="button" name="login-submit" id="login-submit" tabindex="4"\n' +
-  '                               class="form-control btn btn-login" value="Log In" v-on:click="testPost">\n' +
-  '                      </div>\n' +
-  '                    </div>\n' +
-  '                  </div>\n' +
-  '                  <div class="form-group">\n' +
-  '                    <div class="row">\n' +
-  '                      <div class="col-lg-12">\n' +
-  '                        <div class="text-center">\n' +
-  '                          <a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>\n' +
-  '                        </div>\n' +
-  '                      </div>\n' +
-  '                    </div>\n' +
-  '                  </div>\n' +
-  '                </form></div>' };
-
-  const routes = [
-    { path: '/login', component: Login }
-  ];
-
+  import axios from 'axios'
 
   const router = new VueRouter({
-    routes
+    routes:[{path: '/login', component: Login}]
   });
 
-  import axios from 'axios'
   export default {
     router:router,
     data() {
