@@ -7,6 +7,7 @@
         <button class="btn btn-sm align-middle btn-outline-secondary" type="button">Conquest</button>
         <button class="btn btn-sm align-middle btn-outline-secondary" type="button">Review</button>
         <button class="btn btn-sm align-middle btn-outline-secondary" type="button">News</button>
+        <button v-if="show" class="btn btn-sm align-middle btn-outline-secondary" type="button">new button))</button>
       </form>
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -18,13 +19,21 @@
 </template>
 
 <script>
+  import { bus } from '../../main.js'
 
   export default {
     data() {
       return {
+        show:false,
         message: '',
         allMessages: '',
       }
+    },
+    created(){
+      bus.$on('show-param',data=>{
+        console.log(data);
+        this.show=true;
+      })
     }
   }
 </script>

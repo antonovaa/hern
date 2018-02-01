@@ -36,6 +36,7 @@
 
 <script>
   import axios from 'axios'
+  import { bus } from '../../main.js'
 
   export default {
     data() {
@@ -56,6 +57,7 @@
           })
           .catch(function (error) {
             console.log(error);
+            bus.$emit('show-param','123')
           });
       }
     }
