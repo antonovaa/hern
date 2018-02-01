@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-    <form v-if="show1" id="login-form" action="/testformlog" method="post" role="form" style="display: block;">
+    <form role="form" style="display: block;">
       <div class="form-group">
         <input type="text" name="username" v-model="username" id="usernamel" tabindex="1" class="form-control"
                placeholder="Username" value="">
@@ -40,18 +40,11 @@
   export default {
     data() {
       return {
-        show1:true,
-        show2:true,
         password:'',
         username:''
       }
     },
     methods: {
-      loginFormLink: function (event) {
-        this.show1 = true;
-        this.show2 = false;
-//        document.getElementById('login-form')
-      },
       testPost: function () {
 
         axios.post('/testformlog', {
