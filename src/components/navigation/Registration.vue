@@ -5,7 +5,8 @@
         <div class="panel-heading align-items-center">
           <div class="row">
             <div class="col-6">
-              <a href="#" class="active" id="login-form-link" v-on:click="loginFormLink">Login</a>
+              <!--<a href="#" >Login</a>-->
+              <router-link to="/login"><a  class="active" id="login-form-link" v-on:click="loginFormLink" href="#" >Login</a></router-link>
             </div>
             <div class="col-6">
               <a href="#" id="register-form-link" class="active" v-on:click="registerFormLink">Register</a>
@@ -16,64 +17,37 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-12">
-              <transition name="slide-fade"><form  v-if="show1" id="login-form" action="https://phpoll.com/login/process" method="post" role="form"
-                    style="display: block;">
-                <div class="form-group">
-                  <input type="text" name="username" id="usernamel" tabindex="1" class="form-control"
-                         placeholder="Username" value="">
-                </div>
-                <div class="form-group">
-                  <input type="password" name="password" id="passwordl" tabindex="2" class="form-control"
-                         placeholder="Password">
-                </div>
-                <div class="form-group text-center">
-                  <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                  <label for="remember"> Remember Me</label>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                      <input type="submit" name="login-submit" id="login-submit" tabindex="4"
-                             class="form-control btn btn-login" value="Log In">
-                    </div>
+              <transition name="slide-fade">
+                <router-view></router-view>
+              </transition>
+              <transition name="slide-fade2">
+                <form v-if="show2" id="register-form" action="/testformpass" method="post" role="form">
+                  <div class="form-group">
+                    <input type="text" name="username" id="username" tabindex="1" class="form-control"
+                           placeholder="Username" value="">
                   </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="text-center">
-                        <a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+                  <div class="form-group">
+                    <input type="email" name="email" id="email" tabindex="1" class="form-control"
+                           placeholder="Email Address" value="">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" id="password" tabindex="2" class="form-control"
+                           placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="confirmPassword" id="confirmPassword" tabindex="2" class="form-control"
+                           placeholder="Confirm Password">
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="register-submit" id="register-submit" tabindex="4"
+                               class="form-control btn btn-register" value="Register Now">
                       </div>
                     </div>
                   </div>
-                </div>
-              </form>  </transition>
-              <transition name="slide-fade2"><form  v-if="show2" id="register-form" action="https://phpoll.com/register/process" method="post" role="form">
-                <div class="form-group">
-                  <input type="text" name="username" id="username" tabindex="1" class="form-control"
-                         placeholder="Username" value="">
-                </div>
-                <div class="form-group">
-                  <input type="email" name="email" id="email" tabindex="1" class="form-control"
-                         placeholder="Email Address" value="">
-                </div>
-                <div class="form-group">
-                  <input type="password" name="password" id="password" tabindex="2" class="form-control"
-                         placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control"
-                         placeholder="Confirm Password">
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                      <input type="submit" name="register-submit" id="register-submit" tabindex="4"
-                             class="form-control btn btn-register" value="Register Now">
-                    </div>
-                  </div>
-                </div>
-              </form> </transition>
+                </form>
+              </transition>
             </div>
           </div>
         </div>
@@ -84,13 +58,60 @@
 
 <script>
 
+  import VueRouter from 'vue-router'
+
+  const Login = { template: '<div><form v-if="show1" id="login-form" action="/testformlog" method="post" role="form" style="display: block;">\n' +
+  '                  <div class="form-group">\n' +
+  '                    <input type="text" name="username" v-model="username" id="usernamel" tabindex="1" class="form-control"\n' +
+  '                           placeholder="Username" value="">\n' +
+  '                  </div>\n' +
+  '                  <div class="form-group">\n' +
+  '                    <input type="password" name="password" v-model="password" id="passwordl" tabindex="2" class="form-control"\n' +
+  '                           placeholder="Password">\n' +
+  '                  </div>\n' +
+  '                  <div class="form-group text-center">\n' +
+  '                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">\n' +
+  '                    <label for="remember"> Remember Me</label>\n' +
+  '                  </div>\n' +
+  '                  <div class="form-group">\n' +
+  '                    <div class="row">\n' +
+  '                      <div class="col-sm-6 col-sm-offset-3">\n' +
+  '                        <input type="button" name="login-submit" id="login-submit" tabindex="4"\n' +
+  '                               class="form-control btn btn-login" value="Log In" v-on:click="testPost">\n' +
+  '                      </div>\n' +
+  '                    </div>\n' +
+  '                  </div>\n' +
+  '                  <div class="form-group">\n' +
+  '                    <div class="row">\n' +
+  '                      <div class="col-lg-12">\n' +
+  '                        <div class="text-center">\n' +
+  '                          <a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>\n' +
+  '                        </div>\n' +
+  '                      </div>\n' +
+  '                    </div>\n' +
+  '                  </div>\n' +
+  '                </form></div>' };
+
+  const routes = [
+    { path: '/login', component: Login }
+  ];
+
+
+  const router = new VueRouter({
+    routes
+  });
+
+  import axios from 'axios'
   export default {
+    router:router,
     data() {
       return {
         message: '',
         allMessages: '',
-        show1:true,
-        show2:false
+        show1: true,
+        show2: false,
+        username:'',
+        password:''
       }
     },
     computed: {
@@ -101,13 +122,26 @@
     },
     methods: {
       loginFormLink: function (event) {
-        this.show1= true;
-        this.show2= false;
+        this.show1 = true;
+        this.show2 = false;
 //        document.getElementById('login-form')
       },
       registerFormLink: function (event) {
-        this.show1= false;
-        this.show2= true;
+        this.show1 = false;
+        this.show2 = true;
+      },
+      testPost: function () {
+
+        axios.post('/testformlog', {
+          username: this.username,
+          password: this.password
+        })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
     }
   }
@@ -117,14 +151,17 @@
 
 
   .slide-fade-enter-active {
-       transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 
   }
+
   .slide-fade-leave-active {
     transition: all .0s ease;
   }
+
   .slide-fade-enter, .slide-fade-leave-to
-    /* .slide-fade-leave-active до версии 2.1.8 */ {
+    /* .slide-fade-leave-active до версии 2.1.8 */
+  {
     transform: translateX(10px);
     opacity: 0;
   }
@@ -132,16 +169,17 @@
   .slide-fade2-enter-active {
     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
   }
+
   .slide-fade2-leave-active {
     transition: all .0s ease;
   }
+
   .slide-fade2-enter, .slide-fade2-leave-to
-    /* .slide-fade-leave-active до версии 2.1.8 */ {
+    /* .slide-fade-leave-active до версии 2.1.8 */
+  {
     transform: translateX(10px);
     opacity: 0;
   }
-
-
 
   .panel-login {
     border-color: #ccc;
@@ -195,11 +233,11 @@
 
   /*.panel-login input:hover,*/
   /*.panel-login input:focus {*/
-    /*outline: none;*/
-    /*-webkit-box-shadow: none;*/
-    /*-moz-box-shadow: none;*/
-    /*box-shadow: none;*/
-    /*border-color: #ccc;*/
+  /*outline: none;*/
+  /*-webkit-box-shadow: none;*/
+  /*-moz-box-shadow: none;*/
+  /*box-shadow: none;*/
+  /*border-color: #ccc;*/
   /*}*/
 
   .btn-login {
@@ -216,9 +254,9 @@
 
   /*.btn-login:hover,*/
   /*.btn-login:focus {*/
-    /*color: #fff;*/
-    /*background-color: #53A3CD;*/
-    /*border-color: #53A3CD;*/
+  /*color: #fff;*/
+  /*background-color: #53A3CD;*/
+  /*border-color: #53A3CD;*/
   /*}*/
 
   .forgot-password {
@@ -228,8 +266,8 @@
 
   /*.forgot-password:hover,*/
   /*.forgot-password:focus {*/
-    /*text-decoration: underline;*/
-    /*color: #666;*/
+  /*text-decoration: underline;*/
+  /*color: #666;*/
   /*}*/
 
   .btn-register {
@@ -246,8 +284,8 @@
 
   /*.btn-register:hover,*/
   /*.btn-register:focus {*/
-    /*color: #fff;*/
-    /*background-color: #1CA347;*/
-    /*border-color: #1CA347;*/
+  /*color: #fff;*/
+  /*background-color: #1CA347;*/
+  /*border-color: #1CA347;*/
   /*}*/
 </style>
