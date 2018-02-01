@@ -6,7 +6,8 @@
           <div class="row">
             <div class="col-6">
               <!--<a href="#" >Login</a>-->
-              <router-link to="/login"><a  class="active" id="login-form-link" v-on:click="loginFormLink" href="#" >Login</a></router-link>
+              <router-link to="/login"><a class="active" id="login-form-link" v-on:click="loginFormLink"
+                                          href="#">Login</a></router-link>
             </div>
             <div class="col-6">
               <a href="#" id="register-form-link" class="active" v-on:click="registerFormLink">Register</a>
@@ -18,8 +19,10 @@
           <div class="row">
             <div class="col-12">
               <transition name="slide-fade">
-                <div v-if="show1" id="login-form" >
-                  <router-view></router-view>
+                <div v-if="show1" id="login-form">
+                  <keep-alive>
+                    <router-view></router-view>
+                  </keep-alive>
                 </div>
               </transition>
               <transition name="slide-fade2">
@@ -65,19 +68,19 @@
   import axios from 'axios'
 
   const router = new VueRouter({
-    routes:[{path: '/login', component: Login}]
+    routes: [{path: '/login', component: Login}]
   });
 
   export default {
-    router:router,
+    router: router,
     data() {
       return {
         message: '',
         allMessages: '',
         show1: true,
         show2: false,
-        username:'',
-        password:''
+        username: '',
+        password: ''
       }
     },
     computed: {
