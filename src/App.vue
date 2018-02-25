@@ -9,11 +9,6 @@
           <news></news>
         </div>
 
-
-
-
-
-
     <chat></chat>
     <general class="main-content"></general>
   </div>

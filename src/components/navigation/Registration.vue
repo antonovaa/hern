@@ -77,8 +77,8 @@
       return {
         message: '',
         allMessages: '',
-        show1: true,
-        show2: false,
+        show1: false,
+        show2: true,
         username: '',
         password: ''
       }

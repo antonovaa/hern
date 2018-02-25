@@ -3,11 +3,11 @@
 
     <nav class="navbar navbar-inverse bg-inverse">
       <form class="form-inline">
-        <button class="btn btn-sm align-middle btn-outline-secondary" type="button">About</button>
-        <button class="btn btn-sm align-middle btn-outline-secondary" type="button">Conquest</button>
-        <button class="btn btn-sm align-middle btn-outline-secondary" type="button">Review</button>
-        <button class="btn btn-sm align-middle btn-outline-secondary" type="button">News</button>
-        <button v-if="show" class="btn btn-sm align-middle btn-outline-secondary" type="button">new button))</button>
+        <button class="btn btn-sm align-middle btn-outline-secondary" v-on:click="clickForTest(1)" type="button">About</button>
+        <button class="btn btn-sm align-middle btn-outline-secondary" v-on:click="clickForTest(2)" type="button">Conquest</button>
+        <button class="btn btn-sm align-middle btn-outline-secondary" v-on:click="clickForTest(3)" type="button">Review</button>
+        <button class="btn btn-sm align-middle btn-outline-secondary" v-on:click="clickForTest(4)" type="button"> -- {{countTest}}--News</button>
+        <button v-if="show" class="btn btn-sm align-middle btn-outline-secondary" v-on:click="clickForTest(5)" type="button">Buttle</button>
       </form>
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -34,6 +34,17 @@
         console.log(data);
         this.show=true;
       })
+    },
+    methods: {
+      clickForTest:function(a){
+        this.$store.dispatch('setCurrentView',a);
+//        console.log(a+" in header");
+      }
+    },
+    computed:{
+      countTest:function () {
+        return this.$store.state.count;
+      }
     }
   }
 </script>
