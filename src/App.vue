@@ -65,10 +65,11 @@
     left: $sidebar-width;
     z-index: -1;
   }
-  #chat{
+  #chat-form{
     position:fixed;
     bottom:0;
     left:$sidebar-width;
+    width: 456px;
     z-index: 9;
   }
 
