@@ -1,6 +1,8 @@
 <template>
   <div id="review">
-    review main
+    review    start {{this.number}}
+    <img src="./images/vgif-ru-31747.gif" style="width: 50%"/>
+
   </div>
 </template>
 
@@ -9,8 +11,10 @@
   export default {
     data() {
       return {
+        show:true
       }
     },
+    props: ['number'],
 
   }
 </script>
